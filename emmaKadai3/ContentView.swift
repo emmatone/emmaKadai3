@@ -40,13 +40,13 @@ struct ContentView: View {
             //計算式表示エリア
             HStack{
                 //displayNumber1
-                FormulaTextView(displayTextNumber: $displayNumber1)
+                FormulaTextView(displayTextNumber: displayNumber1)
 
                 Text("+")
                     .frame(width: 20)
 
                 //displayNumber2
-                FormulaTextView(displayTextNumber: $displayNumber2)
+                FormulaTextView(displayTextNumber: displayNumber2)
             }
 
             // 計算ボタン
@@ -57,9 +57,9 @@ struct ContentView: View {
 
                 //符号確認
                 //signFlag1がtrue = signFlag1はマイナス
-                if signFlag1 { inputNumber1 = inputNumber1 * -1 }
+                if signFlag1 { inputNumber1 = -inputNumber1 }
                 //signFlag2がtrue = signFlag2はマイナス
-                if signFlag2 { inputNumber2 = inputNumber2 * -1 }
+                if signFlag2 { inputNumber2 = -inputNumber2 }
 
                 //足し算
                 resultText = String(inputNumber1 + inputNumber2)
@@ -107,7 +107,7 @@ struct InputTextView: View {
 
 //displayNumber表示エリア
 struct FormulaTextView: View {
-    @Binding var displayTextNumber: String
+    let displayTextNumber: String
 
     var body: some View {
         Text("\(displayTextNumber)")
